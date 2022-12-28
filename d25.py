@@ -16,13 +16,9 @@ data = open("25.in", "r").read().strip().split("\n")
 cur = data.pop()
 carry = "0"
 for num in data:
-    if len(cur) > len(num):
-        num = num.rjust(len(cur), "0")
-    elif len(num) > len(cur):
-        cur = cur.rjust(len(num), "0")
-    else:
-        num = num.rjust(len(num) + 1, "0")
-        cur = cur.rjust(len(cur) + 1, "0")
+    just = max(len(cur), len(num)) + 1
+    num = num.rjust(just, "0")
+    cur = cur.rjust(just, "0")
 
     res = ""
     for c in range(-1, -len(cur) - 1, -1):
